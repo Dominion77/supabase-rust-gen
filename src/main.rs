@@ -3,6 +3,7 @@ use supabase_rust_gen::{Cli, Generator, GeneratorConfig, SchemaFetcher};
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
+    let _ = dotenvy::dotenv();
     let cli = Cli::parse();
     
     // Fetch schema
