@@ -1,0 +1,42 @@
+[package]
+name = "supabase-rust-gen"
+version = "0.1.0"
+edition = "2021"
+description = "Generate Rust types from Supabase PostgREST schema"
+license = "MIT OR Apache-2.0"
+
+[[bin]]
+name = "supabase-rust-gen"
+path = "src/main.rs"
+
+[dependencies]
+# Core
+tokio = { version = "1.35", features = ["full"] }
+reqwest = { version = "0.11", features = ["json"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
+
+# CLI
+clap = { version = "4.4", features = ["derive", "env"] }
+
+# Code generation
+quote = "1.0"
+proc-macro2 = "1.0"
+prettyplease = "0.2"
+convert_case = "0.6"
+syn = { version = "2.0", features = ["full", "parsing"] }
+
+# Optional runtime dependencies (referenced in generated code)
+chrono = { version = "0.4", optional = true }
+uuid = { version = "1.6", optional = true }
+postgrest = { version = "1.6", optional = true }
+
+[features]
+default = ["chrono", "uuid", "postgrest"]
+chrono = ["dep:chrono"]
+uuid = ["dep:uuid"]
+postgrest = ["dep:postgrest"]
+
+[dev-dependencies]
+tempfile = "3.8"
