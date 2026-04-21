@@ -36,7 +36,7 @@ fn generate_struct(table: &TableDefinition, type_mapper: &TypeMapper) -> proc_ma
     quote! {
         #[doc = #doc]
         #[derive(Debug, Clone, serde::Deserialize, serde::Serialize)]
-        #[serde(rename_all = "camelCase")]
+        #[serde(rename_all = "snake_case")]
         pub struct #struct_name {
             #(#fields),*
         }
