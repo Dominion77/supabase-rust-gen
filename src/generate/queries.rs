@@ -123,7 +123,6 @@ fn generate_query_functions(table: &TableDefinition) -> proc_macro2::TokenStream
                 Ok(inserted)
             }
 
-            /// Update rows in the `#table_name` table
             pub async fn #update_fn(
                 client: &postgrest::Postgrest,
                 column: &str,
@@ -143,7 +142,6 @@ fn generate_query_functions(table: &TableDefinition) -> proc_macro2::TokenStream
                 Ok(rows)
             }
 
-            /// Delete rows from the `#table_name` table
             pub async fn #delete_fn(
                 client: &postgrest::Postgrest,
                 column: &str,
