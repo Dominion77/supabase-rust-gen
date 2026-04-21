@@ -11,12 +11,12 @@ path = "src/main.rs"
 
 [dependencies]
 # Core
-dotenvy = "0.15"
 tokio = { version = "1.35", features = ["full"] }
 reqwest = { version = "0.11", features = ["json"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 anyhow = "1.0"
+dotenvy = "0.15"
 
 # CLI
 clap = { version = "4.4", features = ["derive", "env"] }
@@ -28,13 +28,13 @@ prettyplease = "0.2"
 convert_case = "0.6"
 syn = { version = "2.0", features = ["full", "parsing"] }
 
-# Optional runtime dependencies (referenced in generated code)
+# Optional features
 chrono = { version = "0.4", optional = true }
 uuid = { version = "1.6", optional = true }
 postgrest = { version = "1.6", optional = true }
 
 [features]
-default = ["chrono", "uuid", "postgrest"]
+default = ["chrono", "uuid"]
 chrono = ["dep:chrono"]
 uuid = ["dep:uuid"]
 postgrest = ["dep:postgrest"]

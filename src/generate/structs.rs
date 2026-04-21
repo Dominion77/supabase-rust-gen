@@ -11,12 +11,6 @@ pub fn generate(schema: &ParsedSchema, type_mapper: &TypeMapper) -> Result<Strin
         // Run `supabase-rust-gen` to regenerate.
         
         use serde::{Deserialize, Serialize};
-        
-        #[cfg(feature = "chrono")]
-        use chrono;
-        
-        #[cfg(feature = "uuid")]
-        use uuid::Uuid;
     };
 
     for table in &schema.tables {
@@ -68,9 +62,7 @@ fn generate_field(col: &ColumnDefinition, type_mapper: &TypeMapper) -> proc_macr
         };
     }
 
-    // Add serde skip_serializing_if for Option types
     if col.is_nullable {
-        let field_name_str = col.name.to_string();
         tokens = quote! {
             #[serde(skip_serializing_if = "Option::is_none")]
             #tokens
